@@ -37,7 +37,7 @@ jobs:
         if [ $KERNEL = "4.4" ] ; then
         git clone --depth=1 https://github.com/colorlift/padavan-4.4.git /opt/rt-n56u
         else
-        git clone --depth=1 https://github.com/chongshengB/rt-n56u.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/colorlift/rt-n56u.git /opt/rt-n56u
         fi
 
         if [ ! -f /opt/rt-n56u/trunk/tools/go/go1.15.2.linux-amd64.tar.gz ]; then
