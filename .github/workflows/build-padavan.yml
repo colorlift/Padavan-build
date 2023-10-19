@@ -110,6 +110,27 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=y" >> .config
         #########################################################################################
 
+        #########################################################################################
+        #For TEST
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_SSOBFS/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_ADBYBY/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_SRELAY/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_XRAY/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_V2RAY/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_HTTPS/d' .config
+
+        echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config #SS plus+
+        echo "CONFIG_FIRMWARE_INCLUDE_SSOBFS=n" >> .config # simple-obfs混淆插件
+        echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=y" >> .config #adbyby plus+
+        echo "CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=n" >> .config #DNSFORWARDER
+        echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >> .config #可以不集成
+        echo "CONFIG_FIRMWARE_INCLUDE_XRAY=y" >> .config #集成xray执行文件  ~4.5M
+        echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >> .config #集成v2ray执行文件
+        #########################################################################################
+
+
         sudo ./clear_tree
         echo "I am here! Step 1"
         cat .config
