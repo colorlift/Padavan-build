@@ -32,7 +32,7 @@ jobs:
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
     - name: Clone source code
       env:
-        KERNEL: 4.4
+        KERNEL: 3.4
       run: |
         if [ $KERNEL = "4.4" ] ; then
         git clone --depth=1 https://github.com/colorlift/padavan-4.4.git /opt/rt-n56u
@@ -53,7 +53,7 @@ jobs:
     - name: Build Firmware
       env:
         TNAME: K2P
-        KERNEL: 4.4
+        KERNEL: 3.4
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
@@ -97,10 +97,10 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_CURL=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=n" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_XUPNPD=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SOCAT=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_SOCAT=n" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=y" >> .config
 
         #扩展插件，区分版本，配置选项来源：trunk/build_firmware_modify，或其它
@@ -108,8 +108,8 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ZEROTIER/d' .config
 
         #扩展插件，区分版本，配置选项来源：trunk/build_firmware_modify，或其它
-        echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config
         #########################################################################################
 
         #########################################################################################
