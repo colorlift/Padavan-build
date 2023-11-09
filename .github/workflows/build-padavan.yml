@@ -47,7 +47,7 @@ jobs:
           tar zxfv /opt/rt-n56u/trunk/tools/go/go1.20.10.linux-amd64.tar.gz -C go ;
         fi
 
-        cd /opt/rt-n56u/toolchain-mipsel
+        cd /opt/rt-n56u/toolchain
         ./dl_toolchain.sh
         mkdir -p /opt/images/
     - name: Build Firmware
