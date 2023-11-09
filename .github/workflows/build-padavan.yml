@@ -44,7 +44,7 @@ jobs:
           echo '下载go '
           cd /opt/rt-n56u/trunk/tools
           curl --create-dirs -L https://go.dev/dl/go1.20.10.linux-amd64.tar.gz -o /opt/rt-n56u/trunk/tools/go/go1.20.10.linux-amd64.tar.gz 
-          tar zxfv /opt/rt-n56u/trunk/tools/go/https://go.dev/dl/go1.20.10.linux-amd64.tar.gz -C go ;
+          tar zxfv /opt/rt-n56u/trunk/tools/go/go1.20.10.linux-amd64.tar.gz -C go ;
         fi
 
         cd /opt/rt-n56u/toolchain-mipsel
