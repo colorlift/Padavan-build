@@ -35,19 +35,19 @@ jobs:
         KERNEL: 4.4
       run: |
         if [ $KERNEL = "4.4" ] ; then
-        git clone --depth=1 https://github.com/tsl0922/padavan.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/colorlift/padavan-4.4.git /opt/rt-n56u
         else
         git clone --depth=1 https://github.com/colorlift/rt-n56u.git /opt/rt-n56u
         fi
 
-        if [ ! -f /opt/rt-n56u/trunk/tools/go/go1.20.10.linux-amd64.tar.gz ]; then
+        if [ ! -f /opt/rt-n56u/trunk/tools/go/go1.15.2.linux-amd64.tar.gz ]; then
           echo '下载go '
           cd /opt/rt-n56u/trunk/tools
-          curl --create-dirs -L https://go.dev/dl/go1.20.10.linux-amd64.tar.gz -o /opt/rt-n56u/trunk/tools/go/go1.20.10.linux-amd64.tar.gz 
-          tar zxfv /opt/rt-n56u/trunk/tools/go/go1.20.10.linux-amd64.tar.gz -C go ;
+          curl --create-dirs -L https://go.p2hp.com/dl/go1.15.2.linux-amd64.tar.gz -o /opt/rt-n56u/trunk/tools/go/go1.15.2.linux-amd64.tar.gz 
+          tar zxfv /opt/rt-n56u/trunk/tools/go/go1.15.2.linux-amd64.tar.gz -C go ;
         fi
 
-        cd /opt/rt-n56u/toolchain
+        cd /opt/rt-n56u/toolchain-mipsel
         ./dl_toolchain.sh
         mkdir -p /opt/images/
     - name: Build Firmware
@@ -108,7 +108,7 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ZEROTIER/d' .config
 
         #扩展插件，区分版本，配置选项来源：trunk/build_firmware_modify，或其它
-        echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config
         #########################################################################################
 
