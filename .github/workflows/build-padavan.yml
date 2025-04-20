@@ -101,7 +101,7 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_XUPNPD=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_SOCAT=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=n" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=y" >> .config
 
         #扩展插件，区分版本，配置选项来源：trunk/build_firmware_modify，或其它
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SMARTDNS/d' .config
